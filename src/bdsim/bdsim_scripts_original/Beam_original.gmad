@@ -1,0 +1,50 @@
+! Defining colours:
+cyan2: newcolour, red = 0, green = 128, blue = 255;
+skyBlue: newcolour, red = 0, green = 191, blue = 255;
+lightBlue: newcolour, red = 135, green = 206, blue = 250;
+turqouise: newcolour, red = 64, green = 224, blue = 208;
+orange: newcolour, red = 255, green = 165, blue = 0;
+
+
+! Defining aluminium objects
+alu1: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "blue", apertureType = "rectangular";
+alu2: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "cyan2", apertureType = "rectangular";
+alu3: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "skyBlue", apertureType = "rectangular";
+alu4: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "lightBlue", apertureType = "rectangular";
+alu5: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "turqouise", apertureType = "rectangular";
+alu6: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "green", apertureType = "rectangular";
+alu7: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "yellow", apertureType = "rectangular";
+alu8: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "orange", apertureType = "rectangular";
+alu9: target, l = *m, material = "aluminium", horizontalWidth = *m, colour = "red", apertureType = "rectangular";
+
+! Scintillator and scorer mesh:
+sci: target, l = *m, material = "G4_PLASTIC_SC_VINYLTOLUENE", horizontalWidth = *m, colour = "black", apertureType = "rectangular";
+
+
+
+pl1: placement, bdsimElement = "alu1",x = *m,y = *m,z = *m;
+pl2: placement, bdsimElement = "alu2",y = *m,z = *m;
+pl3: placement, bdsimElement = "alu3",x = *m,y = *m,z = *m;
+pl4: placement, bdsimElement = "alu4",x = *m,z = *m;
+pl6: placement, bdsimElement = "alu6",x = *m,z = *m;
+pl7: placement, bdsimElement = "alu7",x = *m,y = *m,z=  *m;
+pl8: placement, bdsimElement = "alu8",y = *m,z = *m;
+pl9: placement, bdsimElement = "alu9",x = *m,y = *m,z = *m;
+
+l1: line = (alu5,sci);
+use, l1;
+
+denergy: scorer, type="depositedenergy";
+detector: scorermesh , scoreQuantity = "denergy", nx = , ny = , nz = 1, xsize = *m, ysize = *m,
+    zsize = *m, z = *m;
+
+
+! Defining Beam:
+beam, particle = "",
+      energy = 1*GeV,
+      distrType  = "userfile",
+      distrFile  = "../bdsim_particle_files/__.dat",
+      distrFileFormat = "x[m]:y[m]:z[m]:E[MeV]:xp:yp";
+
+option, physicsList="em", worldMaterial = "vacuum",storeMinimalData = 1, outputCompressionLevel = 0;
+

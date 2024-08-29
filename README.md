@@ -32,7 +32,7 @@ This project explores the application of machine learning, specifically convolut
 - **BDSIM:** Integrated BDSIM, a wrapper for Geant4, to produce highly reliable and accurate simulations of the passage of ions through materials.
 - **Electrons**: Modelled the addition of electrons in both the custom Python and BDSIM simulations.
 - **Containerisation**: Implemented Docker along with Apptainer to allow the BDSIM integrated code to operate seamlessly on different platforms including on HPC clusters.
-- **Classifier Network**: Developed a CNN to classify images based on how well the regression CNN is expected to predict beam parameters for a given image.
+- **Classifier Network**: Developed a CNN to classify images based on how accurately the regression CNN is expected to predict beam parameters for each image
 
 ## Conclusion
 The project demonstrates the potential of machine learning to significantly improve the speed and accuracy of diagnostics in laser-driven ion beam systems. The optimised CNN model shows promising results for real-time applications, paving the way for further research and development, particularly with regard to the use of Bayesian optimisation to optimise filter parameters.

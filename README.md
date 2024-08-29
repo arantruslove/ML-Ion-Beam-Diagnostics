@@ -1,5 +1,7 @@
 # Machine Learning Guided Diagnostics for Laser-Driven Ion Beams
 
+Link to report: https://github.com/arantruslove/ML-Ion-Beam-Diagnostics/blob/main/Aran_Truslove_ML_Diagnostics_Report.pdf
+
 ## Overview
 This project explores the application of machine learning, specifically convolutional neural networks (CNNs), to rapidly diagnose key parameters of laser-driven ion beams. By using synthetic data generation and Bayesian optimization, the project aims to predict three essential beam parameters: maximum proton energy (Emax), proton spectra temperature (Tp), and the number of protons in the beam (N0). The developed methods are intended to improve the efficiency and accuracy of beam diagnostics in advanced laser-driven ion acceleration systems.
 

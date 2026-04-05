@@ -4,6 +4,7 @@ Script that carries out Bayesian optimisation of NN hyperparameters.
 WARNING: THIS SCRIPT IS CURRENTLY INCOMPATIBLE WITH THE REST OF THE CODEBASE
 """
 
+from typing import Any, Dict, Tuple
 import numpy as np
 import tensorflow as tf
 import optuna
@@ -19,7 +20,7 @@ study_name = "study-16-03-24"
 timeout = 22 * 60 * 60
 
 
-def machine_learn(trial, images, labels):
+def machine_learn(trial: optuna.Trial, images: np.ndarray, labels: np.ndarray) -> Tuple[float, Any]:
     """Hyperparameter optimisation of a Keras model."""
     # Suggesting hyperparameters
     conv_1_weights = trial.suggest_categorical("conv_1_weights", [16, 32, 64, 128])
@@ -102,7 +103,7 @@ def machine_learn(trial, images, labels):
         return 1000, None
 
 
-def objective(trial, images, labels, best_attributes):
+def objective(trial: optuna.Trial, images: np.ndarray, labels: np.ndarray, best_attributes: Dict[str, Any]) -> float:
     # Tracking best trial attributes
     best_loss = None
 
@@ -117,7 +118,7 @@ def objective(trial, images, labels, best_attributes):
     return loss
 
 
-def main():
+def main() -> None:
     # Reading and normalising the data
     with open(data_path, "rb") as file:
         images_and_labels = pickle.load(file)
